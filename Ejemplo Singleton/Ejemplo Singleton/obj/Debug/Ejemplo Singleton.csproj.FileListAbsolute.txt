@@ -1,0 +1,12 @@
+C:\Users\VICTOR\Documents\Universidad\Herramientas de Software\Tareas\Ejemplo Singleton\Ejemplo Singleton\obj\Debug\Ejemplo Singleton.csprojAssemblyReference.cache
+C:\Users\VICTOR\Documents\Universidad\Herramientas de Software\Tareas\Ejemplo Singleton\Ejemplo Singleton\obj\Debug\Ejemplo_Singleton.Form1.resources
+C:\Users\VICTOR\Documents\Universidad\Herramientas de Software\Tareas\Ejemplo Singleton\Ejemplo Singleton\obj\Debug\Ejemplo_Singleton.Form2.resources
+C:\Users\VICTOR\Documents\Universidad\Herramientas de Software\Tareas\Ejemplo Singleton\Ejemplo Singleton\obj\Debug\Ejemplo_Singleton.Principal.resources
+C:\Users\VICTOR\Documents\Universidad\Herramientas de Software\Tareas\Ejemplo Singleton\Ejemplo Singleton\obj\Debug\Ejemplo_Singleton.Properties.Resources.resources
+C:\Users\VICTOR\Documents\Universidad\Herramientas de Software\Tareas\Ejemplo Singleton\Ejemplo Singleton\obj\Debug\Ejemplo Singleton.csproj.GenerateResource.cache
+C:\Users\VICTOR\Documents\Universidad\Herramientas de Software\Tareas\Ejemplo Singleton\Ejemplo Singleton\obj\Debug\Ejemplo Singleton.csproj.CoreCompileInputs.cache
+C:\Users\VICTOR\Documents\Universidad\Herramientas de Software\Tareas\Ejemplo Singleton\Ejemplo Singleton\bin\Debug\Ejemplo Singleton.exe.config
+C:\Users\VICTOR\Documents\Universidad\Herramientas de Software\Tareas\Ejemplo Singleton\Ejemplo Singleton\bin\Debug\Ejemplo Singleton.exe
+C:\Users\VICTOR\Documents\Universidad\Herramientas de Software\Tareas\Ejemplo Singleton\Ejemplo Singleton\bin\Debug\Ejemplo Singleton.pdb
+C:\Users\VICTOR\Documents\Universidad\Herramientas de Software\Tareas\Ejemplo Singleton\Ejemplo Singleton\obj\Debug\Ejemplo Singleton.exe
+C:\Users\VICTOR\Documents\Universidad\Herramientas de Software\Tareas\Ejemplo Singleton\Ejemplo Singleton\obj\Debug\Ejemplo Singleton.pdb

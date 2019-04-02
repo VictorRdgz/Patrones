@@ -1,0 +1,261 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package backend;
+
+/**
+ *
+ * @author VICTOR
+ */
+public abstract class Motor {
+    
+    abstract public void encender();
+    abstract public void acelerar();
+    abstract public void apagar();
+    
+}
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package backend;
+
+/**
+ *
+ * @author VICTOR
+ */
+public class MotorComun extends Motor {
+    
+     public MotorComun(){
+        super();
+        System.out.println("Creando motor común...");
+    }
+
+
+    @Override
+    public void encender() {
+        System.out.println("Encendiendo motor común.");
+    }
+
+    @Override
+    public void acelerar() {
+        System.out.println("Acelerando motor común.");
+    }
+
+    @Override
+    public void apagar() {
+         System.out.println("Apagando motor común.");
+    }
+}
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package backend;
+
+/**
+ *
+ * @author VICTOR
+ */
+public class MotorEconomico extends Motor {
+    
+    public MotorEconomico(){
+        super();
+        System.out.println("Creando motor económico...");
+    }
+
+    @Override
+    public void encender() {
+        System.out.println("Encendiendo motor económico.");
+    }
+
+    @Override
+    public void acelerar() {
+        System.out.println("Acelerando motor económico.");
+    }
+
+    @Override
+    public void apagar() {
+         System.out.println("Apagando motor económico.");
+    }
+    
+}
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package backend;
+
+/**
+ *
+ * @author VICTOR
+ */
+public class MotorElectrico {
+    
+    private boolean conectado = false;
+    
+    public MotorElectrico() {
+        System.out.println("Creando Motor Eléctrico...");
+        this.conectado = false;
+    }
+    
+    public void conectar() {
+        System.out.println("Conectando Motor Eléctrico...");
+        this.conectado = true;
+    }
+    
+    
+    public void activar() {
+        if(!this.conectado){
+            System.out.println("No se puede activar porque no esta conectado el motor eléctrico.");
+        }
+        else{
+            System.out.println("Esta conectado, activando motor eléctrico");
+        }
+    }
+    
+    public void moverMasRapido() {
+        if(!this.conectado){
+            System.out.println("No se puede a mover rapido el motor electrico porque no esta conectado.");
+        }
+        else{
+            System.out.println("Moviendo más rapido, aumentando el voltaje del motor eléctrico");
+        }
+    }
+    
+    public void detener(){
+        if(!this.conectado){
+            System.out.println("No se puede detener el motor electrico porque no esta conectado.");
+        }
+        else{
+            System.out.println("Deteniendo motor eléctrico");
+        }
+    }
+    
+    public void desconectar(){
+        System.out.println("Desconectando Motor Eléctrico...");
+        this.conectado = false;
+    }
+}
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package backend;
+
+/**
+ *
+ * @author VICTOR
+ */
+public class MotorElectricoAdapter extends Motor{
+    
+    private MotorElectrico motorElectrico;
+    
+    public MotorElectricoAdapter(){
+        super();
+        System.out.println("Creando Motor Electrico Adapter...");
+        this.motorElectrico = new MotorElectrico(); 
+    }
+
+    @Override
+    public void encender() {
+        System.out.println("Encendiendo Motor Electrico Adapter...");
+        this.motorElectrico.conectar();
+        this.motorElectrico.activar();
+    }
+
+    @Override
+    public void acelerar() {
+        System.out.println("Acelerando Motor Electrico Adapter...");
+        this.motorElectrico.moverMasRapido();
+    }
+
+    @Override
+    public void apagar() {
+        System.out.println("Apagando Motor Electrico Adapter...");
+        this.motorElectrico.detener();
+        this.motorElectrico.desconectar();
+    }
+    
+}
+
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package frontend;
+
+import backend.Motor;
+import backend.MotorComun;
+import backend.MotorEconomico;
+import backend.MotorElectricoAdapter;
+import java.util.Scanner;
+        
+
+/**
+ *
+ * @author VICTOR
+ */
+public class Aplicacion {
+    
+    private static Scanner S = new Scanner(System.in);
+    private static Motor motor;
+    
+    public static void main(String[] args) {
+        int opcion;
+        do{
+            opcion = preguntarOpcion();
+            switch(opcion) {
+                case 1:
+                    motor = new MotorComun();
+                    usarMotor();
+                    break;
+                case 2:
+                    motor = new MotorEconomico();
+                    usarMotor();
+                    break;
+                case 3:
+                    motor = new MotorElectricoAdapter();
+                    usarMotor();
+                    break;
+                case 4:
+                    System.out.println("Cerrando programa...");
+                    break;
+                default:
+                    System.out.println("La opción ingresada no es válida.");
+            }
+            System.out.print("\n\n");
+        }while(opcion!=4);
+    }
+    
+    private static int preguntarOpcion() {
+        System.out.println(
+                "MENU DE OPCIONES\n"
+               +"---- -- --------.\n"
+               +"1. Encender motor común.\n"
+               +"2. Encender motor económico.\n"
+               +"3. Encender motor eléctrico.\n"
+               +"4. Salir.\n"
+               +"Seleccione Opcion:"
+        );
+        return Integer.parseInt( S.nextLine() );
+        
+    }
+    private static void usarMotor() {
+        motor.encender();
+        motor.acelerar();
+        motor.apagar();
+    }
+}

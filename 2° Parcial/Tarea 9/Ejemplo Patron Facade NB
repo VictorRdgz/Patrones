@@ -1,0 +1,169 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package modelo;
+
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+
+
+/**
+ *
+ * @author VICTOR
+ */
+public class AnalizadorClase {
+    public static Object o;
+    public static Field atributos[];
+    public static Method metodos[];
+    public static boolean analizarTodo;
+    
+    public static String fijarTarget (Object _o)
+    {
+        if(_o == null)
+        {
+            return "Es imposible analizar un objeto nulo";
+        }
+        else 
+        {
+            o = _o;
+            atributos = o.getClass().getDeclaredFields();
+            metodos = o.getClass().getDeclaredMethods();
+            return "Se esta analizando la clase "+o.getClass().getSimpleName();
+        }
+        
+        
+    }
+    
+    public static String analizarTodo()
+    {
+        return analizarAtributos()+"\n\n"+analizarMetodos();
+    }
+    
+    public static String analizarAtributos()
+    {
+        String rpta = "Atributos que presenta y sus tipos \n";
+        for(Field f : atributos)
+        {
+            rpta += "- "+f.getType().getSimpleName()+" "+f.getName()+'\n';
+        }
+        rpta += "Estos son los "+atributos.length+" atributos que presenta la clase";
+        return rpta;
+        
+    }
+    
+    public static String analizarMetodos()
+    {
+        String rpta = "Metodos que presenta y sus tipos de retorno: \n";
+        for(Method m : metodos)
+        {
+            rpta += "- "+m.getReturnType().getSimpleName()+" "+m.getName()+'\n';
+        }
+        for(Method m: metodos)
+        {
+            rpta += m.getName()+": ";
+            Class<?>[] tipoParametros = m.getParameterTypes();
+            for(Class<?> p : tipoParametros)
+            {
+                rpta += p.getSimpleName()+'\n';
+                
+            }
+            rpta += '\n';
+        }
+        rpta += "Estos son los "+metodos.length+" metodos que presenta la clase";
+        return rpta;
+    }
+    
+    public static String obtenerNombresAtributos()
+    {
+        String rpta = "Nombres de los atributos: \n";
+        for(Field f : atributos)
+        {
+            System.out.println(". "+f.getName());
+        }
+        rpta += "Estos son los "+atributos.length+" atributos que presenta la clase";
+        return rpta;
+    }
+    
+    public static String obtenerNombresMetodos()
+    {
+        String rpta = "Nombres de los metodos: \n";
+        for(Method m : metodos)
+        {
+            System.out.println(". "+m.getName());
+        }
+        rpta += "Estos son los "+metodos.length+" metodos que presenta la clase";
+        return rpta;
+    }
+}
+
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package modelo;
+
+/**
+ *
+ * @author VICTOR
+ */
+public class Empleado {
+    private String nombre;
+    private String apellido;
+    private int edad;
+    
+    public String getNombre() {
+        return nombre;
+    }
+    
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+    
+    public String getApellido() {
+        return apellido;
+    }
+    
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+    
+    public int getEdad() {
+        return edad;
+    }
+    
+    public void setEdad(int edad) {
+        this.edad = edad;
+    }
+}
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package vista;
+
+import modelo.AnalizadorClase;
+import modelo.Empleado;
+
+/**
+ *
+ * @author VICTOR
+ */
+public class Principal {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        // TODO code application logic here
+        System.out.println( AnalizadorClase.fijarTarget( new Empleado () ) );
+        System.out.println( AnalizadorClase.analizarTodo());
+        
+    }
+    
+}
